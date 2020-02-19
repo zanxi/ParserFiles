@@ -24,11 +24,12 @@ int main(int argc, char* argv[])
 		std::cout << str << std::endl;
 	}
 		
+	string callSymb = "\\";
 	string addprefCat = "*";
-	string addprefFile = "";
-	string path2 = "D:\\_V2020_\\_Rabota_2020__\\_elveesneotek_com__\\cat\\";
+	string addprefFile = "";	
+	//path_ = "D:\\md\\pr-master\\";	
 	vector<StructInfoFile> v;
-	v = scandir(path_, addprefCat); // создание списка файлов каталога
+	v = scandir(path_+callSymb, addprefCat); // создание списка файлов каталога
 
 	concurrency::concurrent_vector<StructInfoFile> cv;
 	for (int i = 0; i < v.size(); i++)
