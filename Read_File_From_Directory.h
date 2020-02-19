@@ -32,6 +32,13 @@ string wstring_to_string(wstring s)
 	return s1;
 }
 
+void ResetFile(string pathFile)
+{
+	ofstream rewrite(pathFile);
+	rewrite.write("", 0);
+	rewrite.close();
+}
+
 //boost::lockfree::spsc_queue<StructInfoFile> scandir(string p)
 vector<StructInfoFile> scandir(string p, string addPref)
 {

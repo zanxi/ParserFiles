@@ -9,6 +9,7 @@ class Worker
 {	
 public:
 	std::unique_ptr<std::thread> th_;
+	std::mutex m_lock;
 private:
 	concurrency::concurrent_queue<StructInfoFile> cv;		
 	bool ready = true;
@@ -22,23 +23,21 @@ private:
 				std::chrono::milliseconds(500);
 				continue;
 			}
+			m_lock.lock();
 			StructInfoFile sf;
 			cv.try_pop(sf);
 			Work work(sf);
-			work.Save();			
+			work.Save();				
+			std::this_thread::sleep_for(std::chrono::milliseconds(500));
+			m_lock.unlock();
+			
 		};
 	};
 	
 public:
 	
 	Worker(){  	}
-
-	void SetListFile(concurrency::concurrent_queue<StructInfoFile> _cv)		
-	{
-		//for(const auto& e: _cv)
-		//cv = _cv;
-	}
-
+		
 	void AddTask(StructInfoFile sf)
 	{
 		cv.push(sf);

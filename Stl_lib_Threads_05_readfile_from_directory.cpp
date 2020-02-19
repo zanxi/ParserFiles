@@ -28,6 +28,8 @@ int main(int argc, char* argv[])
 		std::cout<< "{"<<i<<"}: " << v[i].fileName << "\n";
 	}
 
+	ResetFile("hd.txt");
+
 	WorkersParse wp(cv);
 
     std::cout << "Press key!\n";

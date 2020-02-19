@@ -11,41 +11,45 @@ class WorkersParse
 public:
 	WorkersParse(concurrency::concurrent_vector<StructInfoFile> cv)
 	{
-		for (int i = 0; i < numWorkers; i++)
+		for (int i = 0; i < numWorkers; i++) // запуск парсеров
 		{
 			Worker *work = new Worker();
 			work->Start();
 			workers.push_back(work);			
 		}
 
-		int numtasks = 0;
-		int i = 0;
-		for (const auto& e: cv)
+		//int numtasks = 0;
+		int i = 1;
+		for (const auto& e: cv) // раздача заданий
 		{			
-			workers[i]->AddTask(e);
+			workers[i%numWorkers]->AddTask(e);
 			i++;
-			if (numtasks % numWorkers==0)i = 0;
-			numtasks++;
+			//if (numtasks % numWorkers==0)i = 0;
+			//numtasks++;
 		}
-
-		while (true) 
+		int cols = 0;
+		//numtasks = cv.size();
+		while (true)  // цикл проверки выполнения задач
 		{				
-			int cols = 0;
+			cols = 0;
 			for (int i = 0; i < numWorkers; i++)
 			{				
 				if (workers[i]->EmptyTask())cols++;
 			}
-			if (cols == numtasks)break;
-			std::chrono::milliseconds(5000);
-			cout << "Continue parse files .........\n";						
+			if (cols == numWorkers)break;
+			std::this_thread::sleep_for(std::chrono::milliseconds(500)); 
+			cout << "Continue parse files ......... \n";						
 		}
 
-		std::chrono::milliseconds(500);
-		cout << "End finished parse files\n";
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		cout << "End finished parse files! tasks=" << cols << "\n";
 
-		workers[i]->Stop();
-		workers[i]->Join();
-		delete workers[i];
+		for (int i = 0; i < numWorkers; i++)
+		{
+			workers[i]->Stop();
+			workers[i]->Join();
+			delete workers[i];
+		}
 		
 	};
 
