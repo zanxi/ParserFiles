@@ -18,7 +18,7 @@ public:
 WriteInfoAboutCatalog::WriteInfoAboutCatalog(const std::string& file_path) :
 	m_file_path(file_path)
 {
-	m_file_stream.open(m_file_path.c_str());
+	m_file_stream.open(m_file_path.c_str(), std::ofstream::app);
 	if (!m_file_stream.is_open() || !m_file_stream.good())
 	{
 		//throw relevant exception.

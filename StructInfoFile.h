@@ -18,11 +18,11 @@ public:
 
 	}
 
-	StructInfoFile& operator=(const StructInfoFile& rhs)
+	/*StructInfoFile& operator=(const StructInfoFile& rhs)
 	{
 		StructInfoFile sf;		
 		sf.path = rhs.path;
 		sf.fileName = rhs.fileName;
 		return sf;
-	}
+	}*/
 };

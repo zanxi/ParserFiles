@@ -44,6 +44,11 @@ public:
 		cv.push(sf);
 	}
 
+	bool EmptyTask()
+	{
+		return cv.empty();
+	}
+
 	void Start()
 	{
 		th_.reset(new std::thread([this]() { Run(); }));
@@ -57,6 +62,6 @@ public:
 
 	void Stop()
 	{
-		ready = true;
+		ready = false;
 	}
 };

@@ -1,0 +1,55 @@
+[input_3.txt]
+ --------------
+  --------------
+  --------------
+  
+ 2222222
+  2222222
+  2222222
+  2222222
+  
+ zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz 
+[input_.txt]
+ --------------
+  --------------
+  --------------
+  
+ 2222222
+  2222222
+  2222222
+  2222222
+  
+ zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz 
+[input_4.txt]
+ --------------
+  --------------
+  --------------
+  
+ 2222222
+  2222222
+  2222222
+  2222222
+  
+ zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz 
+[input_5.txt]
+ --------------
+  --------------
+  --------------
+  
+ 2222222
+  2222222
+  2222222
+  2222222
+  
+ zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz 
+[input_7.txt]
+ --------------
+  --------------
+  --------------
+  
+ 2222222
+  2222222
+  2222222
+  2222222
+  
+ zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz zzzzzzzzzzzzzzzz 

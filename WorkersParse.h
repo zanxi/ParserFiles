@@ -24,18 +24,36 @@ public:
 		{			
 			workers[i]->AddTask(e);
 			i++;
-			if (numtasks > numWorkers)i = 0;
+			if (numtasks % numWorkers==0)i = 0;
 			numtasks++;
 		}
+
+		while (true) 
+		{				
+			int cols = 0;
+			for (int i = 0; i < numWorkers; i++)
+			{				
+				if (workers[i]->EmptyTask())cols++;
+			}
+			if (cols == numtasks)break;
+			std::chrono::milliseconds(5000);
+			cout << "Continue parse files .........\n";						
+		}
+
+		std::chrono::milliseconds(500);
+		cout << "End finished parse files\n";
+
+		workers[i]->Stop();
+		workers[i]->Join();
+		delete workers[i];
+		
 	};
 
 	~WorkersParse()
 	{
 		for (int i = 0; i < numWorkers; i++)
 		{			
-			workers[i]->Join();
-			workers[i]->Stop();			
-			delete workers[i];
+			
 		}
 	}
 };
