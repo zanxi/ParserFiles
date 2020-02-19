@@ -8,18 +8,27 @@
 concurrency::concurrent_vector<StructInfoFile> cv;
 int main(int argc, char* argv[])
 {
-    std::cout << "Hello World!\n";
-	std::string path2;
-	if (!argv) {
-		path2 =argv[1];
-		cout << path2 << endl;
+    std::cout << "Parser files!\n";
+	std::string path_;
+	if (argc==1) {
+		//path2 =argv[1];
+		std::cout << "Exit press key - No arguments?????????!!!!!!!!\n";
+		getchar();
+		cout << path_ << endl;
+		return 0;
+	}
+	path_ = argv[1];
+
+	for (int i = 0; i < argc; ++i) {
+		string str = argv[i];
+		std::cout << str << std::endl;
 	}
 		
 	string addprefCat = "*";
 	string addprefFile = "";
-	string path_ = "D:\\_V2020_\\_Rabota_2020__\\_elveesneotek_com__\\cat\\";
+	string path2 = "D:\\_V2020_\\_Rabota_2020__\\_elveesneotek_com__\\cat\\";
 	vector<StructInfoFile> v;
-	v = scandir(path_, addprefCat);
+	v = scandir(path_, addprefCat); // создание списка файлов каталога
 
 	concurrency::concurrent_vector<StructInfoFile> cv;
 	for (int i = 0; i < v.size(); i++)
@@ -27,10 +36,8 @@ int main(int argc, char* argv[])
 		cv.push_back(v[i]);
 		std::cout<< "{"<<i<<"}: " << v[i].fileName << "\n";
 	}
-
 	ResetFile("hd.txt");
-
-	WorkersParse wp(cv);
+	WorkersParse wp(cv); // передача парсеру списка файлов каталога
 
     std::cout << "Press key!\n";
     getchar();
